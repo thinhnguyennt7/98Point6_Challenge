@@ -158,3 +158,19 @@ class Interface:
 	def checkValidPosition(self, col):
 		if col > self.col or col < 0:
 			return "ERROR"
+
+
+	'''
+		Function helper that get the player turn
+	'''
+	def getPlayerTurn(self):
+		return self.playerTurn
+
+
+	'''
+		Function helper that set the new player turn
+		param:
+			+ turn: The new turn for new player
+	'''
+	def setPlayerTurn(self, turn):
+		self.playerTurn = turn

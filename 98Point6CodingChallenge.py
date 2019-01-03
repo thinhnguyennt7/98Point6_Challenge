@@ -248,6 +248,7 @@ class Solution(MainBoardLogic):
 
 # Driver	
 try:
+	print("Welcome to Drop Token Game!!! \n")
 	numberOfRow = int(input("Number of row: "))
 	numberOfCol = int(input("number of col: "))
 	if numberOfCol != numberOfRow:

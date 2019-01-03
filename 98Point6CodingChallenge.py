@@ -36,3 +36,28 @@ class Interface:
 		self.columnsPutArray = []
 		self.playerTurn = 1
 		self.currentRow = row - 1
+
+
+	'''
+		Function helper that generate the matrix board game command line
+	'''
+	def getBoardGame(self):
+		for col in range(self.col):
+			print('|', end=" ")
+			for row in range(self.row):
+				print(self.matrixBoard[col][row], end =" ")
+			print("\n")
+
+		for i in range(2):
+			for j in range(self.col * 2 + 1):
+				if i == 0:
+					if j == 0:
+						print("+", end="")
+					else:
+						print("-", end="")
+				else:
+					if j == 0:
+						print(" ", end=" ")
+					elif 1 <= j < 5:
+						print(j, end=" ")
+			print("\n")

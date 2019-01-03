@@ -26,7 +26,6 @@ class MainBoardLogic:
 	# Default global Variables
 	columnsPutArray = []
 	playerTurn = 1
-	
 
 	'''
 		Constructor
@@ -72,20 +71,6 @@ class MainBoardLogic:
 	def getListOfColumns(self):
 		for col in self.columnsPutArray:
 			print(col)
-
-	
-	'''
-		Function helper that get the number of columns that assigned at the constructor
-	'''
-	def getNumberOfColumn(self):
-		return self.col
-		
-		
-	'''
-		Function helper to get out the number of rows that assigned at the row
-	'''
-	def getNumberOfRow(self):
-		return self.row
 
 
 	'''

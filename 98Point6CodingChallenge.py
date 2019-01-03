@@ -69,3 +69,10 @@ class Interface:
 	def getListOfColumns(self):
 		for col in self.columnsPutArray:
 			print(col)
+
+
+	'''
+		Function helper to quit the game
+	'''
+	def exitTheGame(self):
+		sys.exit()

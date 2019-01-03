@@ -61,7 +61,7 @@ class MainBoardLogic:
 				else:
 					if j == 0:
 						print(" ", end=" ")
-					elif 1 <= j < 5:
+					elif 1 <= j < self.col + 1:
 						print(j, end=" ")
 			print("\n")
 
@@ -163,7 +163,7 @@ class MainBoardLogic:
 		print("left diagonal: ", leftDiagonal)
 		print("right diagonal: ", rightDiagonal)
 
-		# If either vertical, horizontal or diagonal has all equal value then it end the game
+		# If either vertical, horizontal or diagonals has all equal value then it end the game
 		if vertical == self.col or vertical == -(self.col) or horizontal == self.col or horizontal == -(self.col) or leftDiagonal == self.col or leftDiagonal == -(self.col) or rightDiagonal == self.col or rightDiagonal == -(self.col):
 			return self.matrixBoard[col][col]
 		else:
@@ -246,6 +246,14 @@ class Solution(MainBoardLogic):
 				print("Please enter valid command or hit <HELP> for more details")
 
 
-# Driver
-gameStart = Solution(4, 4)
-gameStart.dropTokenGame()
+# Driver	
+try:
+	numberOfRow = int(input("Number of row: "))
+	numberOfCol = int(input("number of col: "))
+	if numberOfCol != numberOfRow:
+		print("Please double check the number of rows and columns that you put in. To be able to play the game the matrix board must be a square matrix. Ex: 4x4")
+	else:
+		gameStart = Solution(numberOfRow, numberOfCol)
+		gameStart.dropTokenGame()
+except:
+	print("Please enter the valid integer number")

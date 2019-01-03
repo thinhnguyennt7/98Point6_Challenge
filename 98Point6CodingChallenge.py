@@ -215,7 +215,7 @@ class MainBoardLogic:
 
 
 # Main solution class
-class Solution(MainBoardLogic):
+class DropTokenGame(MainBoardLogic):
 
 	def dropTokenGame(self):
 		gameNotEnd = True
@@ -258,7 +258,7 @@ while True:
 		break
 	except:
 		print("\n*Please enter the valid integer number\n")
-
+		
 # Instantiate to start the game
-gameStart = Solution(numberOfRow, numberOfCol)
+gameStart = DropTokenGame(numberOfRow, numberOfCol)
 gameStart.dropTokenGame()

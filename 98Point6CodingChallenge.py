@@ -225,5 +225,5 @@ class Solution(Interface):
 				print("Please enter valid command or hit <HELP> for more details")
 
 # Driver
-98Point6Game = Solution(4, 4)
-98Point6Game.dropTokenGame()
+gameStart = Solution(4, 4)
+gameStart.dropTokenGame()

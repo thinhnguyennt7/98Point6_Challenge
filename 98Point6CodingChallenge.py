@@ -61,3 +61,11 @@ class Interface:
 					elif 1 <= j < 5:
 						print(j, end=" ")
 			print("\n")
+
+
+	'''
+		Function helper that get the list of columns succesfully assigned in the matrix board game
+	'''
+	def getListOfColumns(self):
+		for col in self.columnsPutArray:
+			print(col)

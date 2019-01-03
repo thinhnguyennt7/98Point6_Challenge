@@ -148,3 +148,13 @@ class Interface:
 			return self.matrixBoard[col][col]
 		else:
 			return -1
+
+
+	'''
+		Function helper to check if the position assign is valid location
+		Param:
+			+ col: The column need to check if valid or not
+	'''
+	def checkValidPosition(self, col):
+		if col > self.col or col < 0:
+			return "ERROR"

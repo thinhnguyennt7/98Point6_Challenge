@@ -20,3 +20,19 @@ Commands:
 	+ EXIT -> Ends the program
 Where 0 is unfilled, 1 is player 1, and 2 is player 2.
 '''
+import sys
+class Interface:
+
+	'''
+		Constructor
+		param:
+			+ row: The row need to set for the matrix board game
+			+ col: The col need to set for the matrix board
+	'''
+	def __init__(self, row, col):
+		self.row = row
+		self.col = col
+		self.matrixBoard = [[0 for _ in range(col)] for _ in range(row)]
+		self.columnsPutArray = []
+		self.playerTurn = 1
+		self.currentRow = row - 1

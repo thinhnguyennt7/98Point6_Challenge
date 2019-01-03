@@ -21,7 +21,12 @@ Commands:
 Where 0 is unfilled, 1 is player 1, and 2 is player 2.
 '''
 import sys
-class Interface:
+class MainBoardLogic:
+
+	# Default global Variables
+	columnsPutArray = []
+	playerTurn = 1
+	
 
 	'''
 		Constructor
@@ -33,8 +38,6 @@ class Interface:
 		self.row = row
 		self.col = col
 		self.matrixBoard = [[0 for _ in range(col)] for _ in range(row)]
-		self.columnsPutArray = []
-		self.playerTurn = 1
 		self.currentRow = row - 1
 
 
@@ -200,7 +203,8 @@ class Interface:
 
 
 # Main solution class
-class Solution(Interface):
+class Solution(MainBoardLogic):
+
 	def dropTokenGame(self):
 		gameNotEnd = True
 		while(gameNotEnd):
@@ -223,6 +227,7 @@ class Solution(Interface):
 				self.helperCommandList()
 			else:
 				print("Please enter valid command or hit <HELP> for more details")
+
 
 # Driver
 gameStart = Solution(4, 4)

@@ -183,3 +183,17 @@ class Interface:
 	'''
 	def newTokenDropPosition(self, putLocation):
 		self.columnsPutArray.append(putLocation)
+
+
+	'''
+		Function helper that help user to see the list of command list allow to use
+	'''
+	def helperCommandList(self):
+		hashDict = {
+			"PUT <Col>" : "OK | ERROR | WIN | DRAW",
+			"GET" : "List of columns that have been successfully put to",
+			"BOARD" : "Get a 4x4 matrix that shows the board state",
+			"EXIT" : "Ends the program"
+		}
+		for key in hashDict:
+			print(". " + key + ": " + hashDict[key])

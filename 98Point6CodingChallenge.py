@@ -73,6 +73,20 @@ class MainBoardLogic:
 		for col in self.columnsPutArray:
 			print(col)
 
+	
+	'''
+		Function helper that get the number of columns that assigned at the constructor
+	'''
+	def getNumberOfColumn(self):
+		return self.col
+		
+		
+	'''
+		Function helper to get out the number of rows that assigned at the row
+	'''
+	def getNumberOfRow(self):
+		return self.row
+
 
 	'''
 		Function helper to quit the game
@@ -111,43 +125,46 @@ class MainBoardLogic:
 	'''
 	def whoWon(self, col):
 		diagonal = vertical = horizontal = 0
+		numberOfCol, numberOfRow = self.getNumberOfColumn(), self.getNumberOfRow()
+	
 
 		# Check the vertical
-		for row in range(self.row - 1, -1, -1):
+		for row in range(numberOfRow - 1, -1, -1):
 			if self.matrixBoard[row][col] == 1:
 				vertical += 1
 			elif self.matrixBoard[row][col] == 2:
 				vertical -= 1
 
 		# Check the horizontal
-		for checkCol in range(self.col):
+		for checkCol in range(numberOfCol):
 			if self.matrixBoard[self.currentRow][checkCol] == 1:
 				horizontal += 1
 			elif self.matrixBoard[self.currentRow][checkCol] == 2:
 				horizontal -= 1
 
 		# Check the diagonal on left
-		for row in range(self.row):
+		for row in range(numberOfRow):
 			if self.matrixBoard[row][row] == 1:
 				diagonal += 1
 			elif self.matrixBoard[row][row] == 1:
 				diagonal -= 1
 
 		# Check the diagonal on right
-#		if diagonal != self.col or diagonal != -(self.col):
-#			diagonal = 0
-#			for row in range(self.row - 1, -1, -1):
-#				if self.matrixBoard[row][row] == 1:
-#					diagonal += 1
-#				elif self.matrixBoard[row][row] == 2:
-#					diagonal -= 1
+		if diagonal != numberOfCol or diagonal != -(numberOfCol):
+			diagonal, currCol = 0, numberOfCol
+			for row in range(numberOfRow):
+				if self.matrixBoard[row][currCol] == 1:
+					diagonal += 1
+				elif self.matrixBoard[row][row] == 2:
+					diagonal -= 1
+				currCol -= 1
 
 		print("vertical: ", vertical)
 		print("horizontal: ", horizontal)
 		print("diagonal: ", diagonal)
 
 		# If either vertical, horizontal or diagonal has all equal value then it end the game
-		if vertical == self.col or vertical == -(self.col) or horizontal == self.col or horizontal == -(self.col) or diagonal == self.col or diagonal == -(self.col):
+		if vertical == numberOfCol or vertical == -(numberOfCol) or horizontal == numberOfCol or horizontal == -(numberOfCol) or diagonal == numberOfCol or diagonal == -(numberOfCol):
 			return self.matrixBoard[col][col]
 		else:
 			return -1

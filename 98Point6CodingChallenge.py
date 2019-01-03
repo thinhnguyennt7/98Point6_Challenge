@@ -174,3 +174,12 @@ class Interface:
 	'''
 	def setPlayerTurn(self, turn):
 		self.playerTurn = turn
+
+
+	'''
+		Function helper that keep track of the list of columns successfully added
+		param:
+			+ putLocation: The location has been successfully added
+	'''
+	def newTokenDropPosition(self, putLocation):
+		self.columnsPutArray.append(putLocation)

@@ -99,3 +99,52 @@ class Interface:
 				self.setPlayerTurn(newTurn)
 				return "OK"
 		return "ERROR"
+
+
+	'''
+		Function helper to determine if which player win the game by checking horizontal, vertical and diagonal side.
+		Param:
+			+ col: The column that just assigned the value
+	'''
+	def whoWon(self, col):
+		diagonal = vertical = horizontal = 0
+
+		# Check the vertical
+		for row in range(self.row - 1, -1, -1):
+			if self.matrixBoard[row][col] == 1:
+				vertical += 1
+			elif self.matrixBoard[row][col] == 2:
+				vertical -= 1
+
+		# Check the horizontal
+		for checkCol in range(self.col):
+			if self.matrixBoard[self.currentRow][checkCol] == 1:
+				horizontal += 1
+			elif self.matrixBoard[self.currentRow][checkCol] == 2:
+				horizontal -= 1
+
+		# Check the diagonal on left
+		for row in range(self.row):
+			if self.matrixBoard[row][row] == 1:
+				diagonal += 1
+			elif self.matrixBoard[row][row] == 1:
+				diagonal -= 1
+
+		# Check the diagonal on right
+#		if diagonal != self.col or diagonal != -(self.col):
+#			diagonal = 0
+#			for row in range(self.row - 1, -1, -1):
+#				if self.matrixBoard[row][row] == 1:
+#					diagonal += 1
+#				elif self.matrixBoard[row][row] == 2:
+#					diagonal -= 1
+
+		print("vertical: ", vertical)
+		print("horizontal: ", horizontal)
+		print("diagonal: ", diagonal)
+
+		# If either vertical, horizontal or diagonal has all equal value then it end the game
+		if vertical == self.col or vertical == -(self.col) or horizontal == self.col or horizontal == -(self.col) or diagonal == self.col or diagonal == -(self.col):
+			return self.matrixBoard[col][col]
+		else:
+			return -1

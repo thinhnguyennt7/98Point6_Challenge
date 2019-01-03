@@ -158,11 +158,6 @@ class MainBoardLogic:
 					rightDiagonal -= 1
 				currCol -= 1
 
-		print("vertical: ", vertical)
-		print("horizontal: ", horizontal)
-		print("left diagonal: ", leftDiagonal)
-		print("right diagonal: ", rightDiagonal)
-
 		# If either vertical, horizontal or diagonals has all equal value then it end the game
 		if vertical == self.col or vertical == -(self.col) or horizontal == self.col or horizontal == -(self.col) or leftDiagonal == self.col or leftDiagonal == -(self.col) or rightDiagonal == self.col or rightDiagonal == -(self.col):
 			return self.matrixBoard[col][col]
@@ -246,15 +241,24 @@ class Solution(MainBoardLogic):
 				print("Please enter valid command or hit <HELP> for more details")
 
 
-# Driver	
-try:
-	print("Welcome to Drop Token Game!!! \n")
-	numberOfRow = int(input("Number of row: "))
-	numberOfCol = int(input("number of col: "))
-	if numberOfCol != numberOfRow:
-		print("Please double check the number of rows and columns that you put in. To be able to play the game the matrix board must be a square matrix. Ex: 4x4")
-	else:
-		gameStart = Solution(numberOfRow, numberOfCol)
-		gameStart.dropTokenGame()
-except:
-	print("Please enter the valid integer number")
+# Driver
+print("Welcome to Drop Token Game!!! \n")
+while True:
+	try:
+		numberOfRow = int(input("Number of row: "))
+		while True:
+			try:
+				numberOfCol = int(input("Number of col: "))
+				if numberOfCol != numberOfRow:
+					print("\n*** Please double check the number of rows and columns that you put in. To be able to play the game the matrix board must be a square matrix. Ex: 4x4 \n")
+				else:
+					break
+			except:
+				print("\n*Please enter the valid integer number\n")
+		break
+	except:
+		print("\n*Please enter the valid integer number\n")
+
+# Instantiate to start the game
+gameStart = Solution(numberOfRow, numberOfCol)
+gameStart.dropTokenGame()

@@ -197,3 +197,33 @@ class Interface:
 		}
 		for key in hashDict:
 			print(". " + key + ": " + hashDict[key])
+
+
+# Main solution class
+class Solution(Interface):
+	def dropTokenGame(self):
+		gameNotEnd = True
+		while(gameNotEnd):
+			command = input("> ").lower() # Ask the user input
+			if command == 'exit':
+				self.exitTheGame()
+			elif command == 'board':
+				self.getBoardGame()
+			elif command == 'get':
+				self.getListOfColumns()
+			elif "put " in command:
+				command, columnToAdd = command.split(" ")
+				try:
+					columnToAdd = int(columnToAdd)
+					currentStatus = self.putAtColumn(columnToAdd)
+					print(currentStatus)
+				except:
+					print("Please enter valid command. Example <PUT 1>")
+			elif command == "help":
+				self.helperCommandList()
+			else:
+				print("Please enter valid command or hit <HELP> for more details")
+
+# Driver
+98Point6Game = Solution(4, 4)
+98Point6Game.dropTokenGame()

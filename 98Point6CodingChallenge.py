@@ -76,3 +76,26 @@ class Interface:
 	'''
 	def exitTheGame(self):
 		sys.exit()
+
+
+	'''
+		Function helper to put the specific value at the specific column
+		Param:
+			+ col: The column that need to assign value
+	'''
+	def putAtColumn(self, col):
+		self.checkValidPosition(col)
+		for row in range(self.row - 1, -1, -1): # Reverse order, bottom up
+			newCol = col - 1
+			if self.matrixBoard[row][newCol] == 0:
+				self.currentRow = row # set the current row need to check
+				self.matrixBoard[row][newCol] = self.getPlayerTurn()
+				self.newTokenDropPosition(col)
+				if (self.whoWon(newCol) != -1):
+					return "WIN"
+				if (len(self.columnsPutArray) == (self.row * self.col)):
+					return "DRAW"
+				newTurn = 2 if self.getPlayerTurn() == 1 else 1
+				self.setPlayerTurn(newTurn)
+				return "OK"
+		return "ERROR"
